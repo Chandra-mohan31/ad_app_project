@@ -1,20 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomePage from "./screens/HomePage";
+import FindDonarsList from "./screens/FindDonorsList";
+import FindDonorFullList from "./screens/FindDonorFullList";
+import ChatBot from "./screens/ChatBot";
+const Stack = createNativeStackNavigator();
+const App =()=>{
+    
+    // const [bgcolor,setBgcolor] = useState("#FF2156");
+  let bgcolor = "#FF2156"
+
+    return(
+        <>
+        <StatusBar />
+        <NavigationContainer>
+          <Stack.Navigator>
+            
+            <Stack.Screen options={{headerShown: false}} name="Home" component={HomePage} />
+            <Stack.Screen options={{headerShown: false}} name="FindDonar" component={FindDonarsList} />
+            <Stack.Screen options={{headerShown: false}} name="FindDonarsList" component={FindDonorFullList} />
+            <Stack.Screen options={{headerShown: false}} name="ChatBot" component={ChatBot} />
+
+
+
+
+
+          </Stack.Navigator>
+        </NavigationContainer>
+          
+        </>
+    )
 }
 
+
+
+export default App
+
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  container:{
+    
+    display: "flex",
+    alignItems:"center",
+    justifyContent:"center"
+    
   },
-});
+
+})
